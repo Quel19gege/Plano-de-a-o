@@ -1,1 +1,28 @@
+import matplotlib.pyplot as plt
+import numpy as np
 
+def gerar_avaliacao(nota):
+    """Gera uma avaliação baseada em cores de acordo com a nota."""
+    cores = {
+        1: "#FF0000",  # Vermelho - Ruim
+        2: "#FF4500",  # Laranja escuro - Regular
+        3: "#FFFF00",  # Amarelo - Médio
+        4: "#9ACD32",  # Verde amarelado - Bom
+        5: "#008000"   # Verde - Excelente
+    }
+    
+    if nota not in cores:
+        print("Nota inválida! Use um valor entre 1 e 5.")
+        return
+    
+    fig, ax = plt.subplots()
+    ax.set_facecolor(cores[nota])
+    ax.text(0.5, 0.5, f'Nota: {nota}', fontsize=20, ha='center', va='center', color='black', weight='bold')
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_frame_on(False)
+    plt.show()
+
+# Exemplo de uso:
+avaliacao = int(input("Digite uma nota de 1 a 5: "))
+gerar_avaliacao(avaliacao)
